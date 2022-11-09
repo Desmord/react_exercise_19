@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 
-import Posts from './Components/Pages/Posts/Posts';
+import Home from './Components/Pages/Home/Home';
 import SinglePost from './Components/Pages/SinglePost/SinglePost';
 import Add from './Components/Pages/Add/Add';
 import Edit from './Components/Pages/Edit/Edit';
@@ -16,7 +16,7 @@ function App() {
     <Container>
       <Header />
       <Routes>
-        <Route path="/" element={<Posts />} />
+        <Route path="/" element={<Home />} />
         <Route path="/post/:id" element={<SinglePost />} />
         <Route path="/post/add" element={<Add />} />
         <Route path="/post/edit/:id" element={<Edit />} />
