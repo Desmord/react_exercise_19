@@ -1,9 +1,10 @@
-import styles from './Edit.module.scss'
+import EditPostForm from "../../Features/EditPostForm/EditPostForm";
 
 const Edit = () => {
     return (
-        <div className={styles.container}>
-            Edit
+        <div className={`d-flex flex-column align-items-center`}>
+            <h3>Edit post</h3>
+            <EditPostForm />
         </div>
     )
 }
