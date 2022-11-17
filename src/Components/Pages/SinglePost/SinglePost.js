@@ -3,6 +3,8 @@ import { useSelector } from 'react-redux';
 import { getPostById } from '../../../Redux/postRedux'
 import { Container } from 'react-bootstrap';
 import { Navigate } from 'react-router-dom';
+import { dateToStr } from '../../../Utils';
+
 
 import EditButton from '../../Common/EditButton/EditButton';
 import DeleteButton from '../../Common/DeleteButton/DeleteButton';
@@ -25,8 +27,8 @@ const SinglePost = () => {
             </div>
             <div className={`p-2 d-flex flex-column justify-content-center col-12 col-sm-12 col-md-8 col-lg-6 m-2`}>
                 <span><strong>Author: </strong>{post.author}</span>
-                <span><strong>Published: </strong>{post.publishedDate}</span>
-                <span className={`mt-3`}>{post.content}</span>
+                <span><strong>Published: </strong>{dateToStr(post.publishedDate)}</span>
+                <span className={`mt-3`} ><p dangerouslySetInnerHTML={{ __html: post.content }}></p></span>
             </div>
         </Container>
     )

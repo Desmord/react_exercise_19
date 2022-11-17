@@ -1,12 +1,15 @@
 import { useState } from 'react';
+import ReactQuill from 'react-quill';
+import DatePicker from "react-datepicker";
 
-import styles from './PostForm.module.scss'
+import "react-datepicker/dist/react-datepicker.css";
+import 'react-quill/dist/quill.snow.css';
 
 const PostForm = ({ action, actionText, ...props }) => {
 
     const [title, setTitle] = useState(props.title || '');
     const [author, setAuthor] = useState(props.author || '');
-    const [publishedDate, setPublishedDate] = useState(props.publishedDate || '');
+    const [publishedDate, setPublishedDate] = useState(props.publishedDate || new Date());
     const [shortDescription, setShortDescription] = useState(props.shortDescription || '');
     const [content, setContent] = useState(props.content || '');
 
@@ -27,15 +30,16 @@ const PostForm = ({ action, actionText, ...props }) => {
             </div>
             <div className="form-group d-flex flex-column  col-10  col-sm-6">
                 <label className={`p-2`} >Published</label>
-                <input className={`form-control`} value={publishedDate} onChange={e => setPublishedDate(e.target.value)} type="text" />
+                <DatePicker selected={publishedDate} onChange={(date) => setPublishedDate(date)} />
+                {/* <input className={`form-control`} value={publishedDate} onChange={e => setPublishedDate(e.target.value)} type="text" /> */}
             </div>
             <div className="form-group d-flex flex-column  col-12  col-sm-8">
                 <label className={`p-2`} >Short description</label>
-                <textarea className={`form-control ${styles.textArea}`} value={shortDescription} onChange={e => setShortDescription(e.target.value)} />
+                <ReactQuill theme="snow" value={shortDescription} onChange={setShortDescription} />
             </div>
             <div className="form-group d-flex flex-column  col-12  col-sm-8">
                 <label className={`p-2`} >Main content</label>
-                <textarea className={`form-control ${styles.textArea}`} value={content} onChange={e => setContent(e.target.value)} />
+                <ReactQuill theme="snow" value={content} onChange={setContent} />
             </div>
             <button className={`btn btn-primary mt-3`}>{actionText}</button>
         </form>
