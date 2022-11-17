@@ -1,4 +1,4 @@
-const initialState = {
+export const initialState = {
     posts: [
         {
             id: '1',
@@ -6,7 +6,8 @@ const initialState = {
             shortDescription: 'Short description of the article...',
             content: 'Main content of the article 1',
             publishedDate: new Date(),
-            author: 'John Not Doe'
+            author: 'John Not Doe',
+            categorie: `Sport`
         },
         {
             id: '2',
@@ -14,7 +15,8 @@ const initialState = {
             shortDescription: 'Sit amet consectetur ',
             content: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit.',
             publishedDate: new Date(),
-            author: 'John Doe'
+            author: 'John Doe',
+            categorie: `News`
         },
         {
             id: '3',
@@ -22,7 +24,8 @@ const initialState = {
             shortDescription: 'Quisquam alias obcaecati expedita.',
             content: 'Main content of the article 3',
             publishedDate: new Date(),
-            author: 'Doe John'
+            author: 'Doe John',
+            categorie: `Movies`
         },
         {
             id: '4',
@@ -30,9 +33,9 @@ const initialState = {
             shortDescription: 'Repudiandae esse blanditiis.',
             content: 'Main content of the article 4',
             publishedDate: new Date(),
-            author: 'John'
+            author: 'John',
+            categorie: `Sport`
         }
-    ]
+    ],
+    categories: [`Sport`, `News`, `Movies`]
 }
-
-export default initialState;

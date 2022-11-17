@@ -9,6 +9,7 @@ const NavBar = () => {
             <Navbar.Brand className={``}>Blog.app</Navbar.Brand>
             <Nav >
                 <Nav.Link className={`px-2 `} as={NavLink} to="/">Home</Nav.Link>
+                <Nav.Link className={`px-2 `} as={NavLink} to="/categories">Categories</Nav.Link>
                 <Nav.Link className={`px-2 `} as={NavLink} to="/about">About</Nav.Link>
             </Nav>
         </Navbar>

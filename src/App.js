@@ -9,7 +9,8 @@ import About from './Components/Pages/About/About';
 import PageNotFound from './Components/Pages/PageNotFound/PageNotFound';
 import Header from './Components/Views/Header/Header';
 import Footer from './Components/Views/Footer/Footer';
-
+import Categories from './Components/Pages/Categories/Categories';
+import SingleCategories from './Components/Pages/SingleCategories/SingleCategories';
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
         <Route path="/post/:id" element={<SinglePost />} />
         <Route path="/post/add" element={<Add />} />
         <Route path="/post/edit/:id" element={<Edit />} />
+        <Route path="/categories" element={<Categories />} />
+        <Route path="/categories/filter/:name" element={<SingleCategories />} />
         <Route path="/about" element={<About />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>

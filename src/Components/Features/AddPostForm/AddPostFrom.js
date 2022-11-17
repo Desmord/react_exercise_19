@@ -11,14 +11,15 @@ const AddPostForm = () => {
     const navigate = useNavigate();
 
 
-    const handleSubmit = ({ title, publishedDate, shortDescription, content, author }) => {
+    const handleSubmit = ({ title, publishedDate, shortDescription, content, author, categorie }) => {
 
         dispatch(addPost({
             title: title,
             shortDescription: shortDescription,
             content: content,
             publishedDate: publishedDate,
-            author: author
+            author: author,
+            categorie: categorie
         }));
         navigate(`/`);
     }

@@ -5,6 +5,8 @@ export const getAllPosts = (state) => state.posts;
 
 export const getPostById = ({ posts }, id) => posts.find(post => post.id === id)
 
+export const getPostsByCategory = ({ posts }, category) => posts.filter(post => post.categorie === category ? true : false);
+
 // actions
 const createActionName = actionName => `app/posts/${actionName}`;
 const REMOVE_POST = createActionName(`REMOVE_POST`);
@@ -31,7 +33,8 @@ const postsReducer = (statePart = [], action) => {
         shortDescription: action.payload.shortDescription,
         content: action.payload.content,
         publishedDate: action.payload.publishedDate,
-        author: action.payload.author
+        author: action.payload.author,
+        categorie: action.payload.categorie
       }) : post)
     default:
       return statePart;

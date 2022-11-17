@@ -1,5 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSelector } from "react-redux"
 import { useForm } from "react-hook-form";
+import { getAllCategories } from '../../../Redux/categoriesRedux';
 import ReactQuill from 'react-quill';
 import DatePicker from "react-datepicker";
 
@@ -17,18 +19,18 @@ const PostForm = ({ action, actionText, ...props }) => {
     const [contentError, setContentError] = useState(false);
     const [dateError, setDateError] = useState(false);
 
+    const categories = useSelector(state => getAllCategories(state))
+
+    const [categorie, setCategorie] = useState(props.categorie || categories[0]);
+
 
     const { register, handleSubmit: validate, formState: { errors } } = useForm();
-
-    // const handleSubmit = (e) => {
-    //     action({ title, author, publishedDate, shortDescription, content });
-    // }
 
     const handleSubmit = () => {
         setContentError(!content)
         setDateError(!publishedDate)
         if (content && publishedDate) {
-            action({ title, author, publishedDate, shortDescription, content });
+            action({ title, author, publishedDate, shortDescription, content, categorie });
         }
     };
 
@@ -58,6 +60,16 @@ const PostForm = ({ action, actionText, ...props }) => {
                 <label className={`p-2`} >Published</label>
                 <DatePicker selected={publishedDate} onChange={(date) => setPublishedDate(date)} />
                 {dateError && <small className="d-block form-text text-danger mt-2">Wrong date</small>}
+            </div>
+            <div className="form-group d-flex flex-column  col-10  col-sm-6">
+                <select
+                    className="form-select mt-3"
+                    name="categories"
+                    id="categories"
+                    value={categorie}
+                    onChange={(e) => setCategorie(e.target.value)}>
+                    {categories.map((cat, index) => <option key={index} value={cat}>{cat}</option>)}
+                </select>
             </div>
             <div className="form-group d-flex flex-column  col-12  col-sm-8">
                 <label className={`p-2`} >Short description</label>

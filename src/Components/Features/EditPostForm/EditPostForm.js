@@ -20,14 +20,15 @@ const EditPostForm = () => {
     const post = useSelector(state => getPostById(state, id))
 
 
-    const handleSubmit = ({ title, publishedDate, shortDescription, content, author }) => {
+    const handleSubmit = ({ title, publishedDate, shortDescription, content, author, categorie }) => {
         dispatch(editPost({
             id: post.id,
             title,
             shortDescription,
             publishedDate,
             author,
-            content
+            content,
+            categorie
         }))
         navigate(`/`);
     }
@@ -43,6 +44,7 @@ const EditPostForm = () => {
             publishedDate={post.publishedDate}
             shortDescription={post.shortDescription}
             content={post.content}
+            categorie={post.categorie}
         />
     )
 }
